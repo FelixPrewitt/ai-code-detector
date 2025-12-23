@@ -1,0 +1,4 @@
+print("hello world")
+for i in range(3): print(i)
+x = 10 + 5
+def add(a, b): return a + b
