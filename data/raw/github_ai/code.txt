@@ -1,0 +1,72 @@
+import random; num=random.randrange(1,100); count=1; guess=int(input()); while guess!=num: count+=1; guess=int(input()); print(count)
+def addition(num1,num2): num1+=num2; return num1
+def information(): name=input(); color=input(); return name,color
+name,color=information(); print(name,color)
+def average_grade(): g1=int(input()); g2=int(input()); g3=int(input()); g4=int(input()); return (g1+g2+g3+g4)/4
+def determineGrade(avg): print("A grade") if avg>=90 else print("B grade") if avg>=80 else print("C grade") if avg>=70 else print("D grade") if avg>=60 else print("F grade")
+def tester(): n1=int(input()); n2=int(input()); return True if n1>n2 else False
+number=int(input()); factorial=1; for i in range(1,number+1): factorial*=i; print(number,factorial)
+balance=int(input()); option=""; while option!="exit": option=input(); balance+=int(input()) if option=="deposit money" else balance
+primelist=[]; [primelist.append(n) for n in range(1,101) if all(n%i!=0 for i in range(2,n))]
+def is_prime(n): if n<2: return False; for i in range(2,int(n**0.5)+1): if n%i==0: return False; return True
+def factorial(n): result=1; for i in range(1,n+1): result*=i; return result
+def palindrome(s): return s==s[::-1]
+def find_max(nums): m=nums[0]; for n in nums: if n>m: m=n; return m
+def sum_list(nums): total=0; for n in nums: total+=n; return total
+def count_vowels(s): c=0; for ch in s.lower(): if ch in "aeiou": c+=1; return c
+def reverse_string(s): return "".join(reversed(s))
+def even_numbers(nums): return [n for n in nums if n%2==0]
+def average(nums): return sum(nums)/len(nums)
+def fibonacci(n): a,b=0,1; for _ in range(n): a,b=b,a+b; return a
+nums=[]  for i in range(5): nums.append(int(input()))  print(nums)  # collect inputs
+total=0  for i in range(1,11): total+=i  print(total)  # add up numbers
+s=input()  for ch in s: print(ch)  # loop chars
+x=int(input())  if x>10: print("big") else: print("small")  # quick check
+values=[1,2,3,4]  values.reverse()  print(values)  # reverse list
+count=0  for i in range(1,21): if i%3==0: count+=1  print(count)  # multiples
+word=input()  print(len(word))  # length check
+a=int(input()) b=int(input())  print(a+b,a*b)  # math ops
+nums=[5,2,9,1]  m=nums[0]  for n in nums: if n<m: m=n  print(m)  # min value
+flag=True  while flag: x=input()  if x=="q": flag=False  # loop quit
+def is_even(n): return n%2==0
+def square_list(nums): return [n*n for n in nums]
+def max_value(nums): return max(nums)
+def count_words(s): return len(s.split())
+def merge_lists(a,b): return a+b
+def unique_items(lst): return list(set(lst))
+def celsius_to_fahrenheit(c): return (c*9/5)+32
+def valid_email(s): return "@" in s and "." in s
+def sum_range(n): return sum(range(1,n+1))
+def flatten(matrix): return [item for row in matrix for item in row]
+def clamp(n,low,high): return low if n<low else high if n>high else n
+def avg(nums): return sum(nums)/len(nums) if len(nums)>0 else 0
+def is_upper(s): return s==s.upper()  # quick check
+def first_last(lst): return lst[0],lst[-1]
+def safe_div(a,b): return a/b if b!=0 else 0
+def count_char(s,c): return s.count(c)
+def remove_spaces(s): return s.replace(" ","")
+def in_range(x,a,b): return a<=x<=b
+def normalize(x,maxv): return x/maxv if maxv!=0 else x
+def toggle(flag): return not flag
+def calculate_average(numbers): total=0; for n in numbers: total+=n; return total/len(numbers)
+def is_valid_age(age): return age>=18
+def filter_positive_values(values): return [v for v in values if v>0]
+def get_maximum_value(data): max_val=data[0]; for x in data: if x>max_val: max_val=x; return max_val
+def convert_seconds_to_minutes(seconds): return seconds/60
+def contains_keyword(text,keyword): return keyword in text
+def normalize_values(values): m=max(values); return [v/m for v in values]
+def compute_factorial(n): result=1; for i in range(1,n+1): result*=i; return result
+def merge_and_sort(list_a,list_b): combined=list_a+list_b; combined.sort(); return combined
+def remove_duplicates(items): unique=[]; for i in items: if i not in unique: unique.append(i); return unique
+def count_char(s,c): total=0; for i in range(len(s)): if s[i]==c: total+=1; return total
+def count_char(s,c): return s.count(c)
+def remove_spaces(s): result=""; for ch in s: if ch!=" ": result+=ch; return result
+def remove_spaces(s): return s.replace(" ","")
+def normalize(x,maxv): if maxv==0: return x; value=x/maxv; return value
+def normalize(x,maxv): return x/maxv if maxv!=0 else x
+def count_words(s): words=s.split(); count=0; for w in words: count+=1; return count
+def count_words(s): return len(s.split())
+def factorial(n): result=1; for i in range(1,n+1): result*=i; return result
+def factorial(n): return 1 if n<=1 else n*factorial(n-1)
+
+
