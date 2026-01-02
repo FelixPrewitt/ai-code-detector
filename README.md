@@ -1,51 +1,67 @@
-AI Code Detector 🤖
+AI Code Detector 
+
 Detecting AI-Generated vs Human-Written Code
 
-The AI Code Detector is my first personal machine learning project, focused on understanding how models can distinguish AI-generated code from human-written code.
-This project emphasizes fundamentals—data preprocessing, feature extraction, and experimentation—over model complexity.
+Author: Felix Prewitt
 
-👤 Author
-Developed by Felix Prewitt
+ The AI Code Detector is a personal machine learning project that explores whether models can distinguish AI-generated code from human-written code using only the source code itself.
 
- Tech Stack
+ The project focuses on machine learning fundamentals—data preprocessing, feature extraction, dataset design, and experimentation—rather than model complexity. It is designed as a learning-first, portfolio project that emphasizes understanding model behavior and real-world limitations.
 
--Python
--scikit-learn
--TF-IDF (character-level n-grams)
--VS Code
--Git & GitHub
+- What This Project Does
 
-Local development on macOS (M1)
+ Trains a machine learning model on labeled Python code snippets
+ Analyzes source code using character-level TF-IDF features
+ Evaluates how well authorship signals can be learned from isolated code
+ Investigates where ambiguity naturally limits detection accuracy
 
- Project Highlights
+- Tech Stack
 
-End-to-end ML pipeline (preprocessing → features → modeling)
-Character-level analysis tailored for source code
-Modular, scalable project structure
-Built as a learning-first, portfolio project
+    Python
+    scikit-learn
+    TF-IDF (character-level n-grams)
+    VS Code
+    Git & GitHub
 
- Current Features
+Local development on macOS (M1).
 
--Code cleaning and normalization
--TF-IDF feature extraction
--Dataset preparation utilities
--Initial ML pipeline setup
+📂 Project Structure
+ai_code_detector/
+├── data/
+│   └── samples/
+│       └── github_ai/
+│           ├── code.txt
+│           └── labels.txt
+├── src/
+│   ├── data_loader.py
+│   ├── preprocessing.py
+│   ├── features.py
+│   ├── train.py
+│   ├── evaluate.py
+│   └── predict.py
+├── models/
+├── tests/
+└── README.md
 
- Next Steps
+ Current Status
 
--Train and evaluate baseline classifiers
--Expand and balance the dataset
--Compare feature strategies
--Explore LLM-based detection approaches
+    End-to-end ML pipeline implemented
+    Dataset includes human-written code, AI-generated code, and paired examples
+    Model training and evaluation working as expected   
+    Actively iterating and improving dataset quality
 
-Status
+ Purpose
 
-🔹 Early development
-🔹 Actively learning and iterating
+  This project demonstrates:
+    Practical machine learning fundamentals
+    Thoughtful dataset and experiment design
+    Clean Python project organization
+    Applied problem-solving beyond coursework
+    
+Future Work
 
-Purpose
+    Expand and refine the dataset
+    Improve authorship detection through targeted examples
+    Experiment with additional feature representations
+    Explore more advanced or hybrid detection approaches
 
-This project demonstrates:
--Practical machine learning fundamentals
--Clean Python project organization
--Applied problem-solving beyond coursework
