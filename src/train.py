@@ -7,6 +7,10 @@ from sklearn.model_selection import train_test_split
 import joblib
 from pathlib import Path
 
+from structure_features import extract_structure_features
+from scipy.sparse import hstack
+
+
 MODEL_DIR = Path("models")
 MODEL_DIR.mkdir(exist_ok=True)
 
@@ -21,8 +25,14 @@ def train():
         random_state=42, 
     )
 
-    x_train, vectorizer = extract_features(x_train_text)
-    
+    # Text features
+    x_train_text_vec, vectorizer = extract_features(x_train_text)
+
+    # Structural features
+    x_train_struct = extract_structure_features(x_train_text)
+
+    # Combine features
+    x_train = hstack([x_train_text_vec, x_train_struct])
 
     model = LogisticRegression(max_iter=1000)
     model.fit(x_train, y_train)
@@ -34,5 +44,3 @@ def train():
 
 if __name__ == "__main__":
     train()
-
-

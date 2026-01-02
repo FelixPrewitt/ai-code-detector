@@ -1,65 +1,64 @@
 from data_loader import load_dataset
 from preprocessing import clean_code
 from features import extract_features
+from structure_features import extract_structure_features
+
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from scipy.sparse import hstack
+
 import joblib
 from pathlib import Path
 
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 
 MODEL_DIR = Path("models")
 
-
 def evaluate():
-   #load train model and vectorizer 
+    # Load trained artifacts
     model = joblib.load(MODEL_DIR / "model.joblib")
     vectorizer = joblib.load(MODEL_DIR / "vectorizer.joblib")
 
-    #load cleaned full dataset
+    # Load and clean dataset
     code, labels = load_dataset("github_ai")
     code = clean_code(code)
 
-    #same splt dataset as in train.py
+    # Same split as training (important!)
     _, x_test_text, _, y_test = train_test_split(
         code,
         labels,
         test_size=0.2,
-        random_state=42
+        random_state=42,
     )
 
 
-    #transform test data using loaded vectorizer
-    x_test = vectorizer.transform(x_test_text)
+    # Text features using TRAINED vectorizer
+    x_test_text_vec, _ = extract_features(
+        x_test_text,
+        vectorizer=vectorizer
+    )
 
-    #make predictions
-    pred = model.predict(x_test)
+    # Structural features
+    x_test_struct = extract_structure_features(x_test_text)
 
-    #accuracy
-    accuracy = accuracy_score(y_test, pred)
+    # Combine both
+    x_test = hstack([x_test_text_vec, x_test_struct])
+
+    # ---- PREDICTION ----
+    predictions = model.predict(x_test)
+
+    accuracy = accuracy_score(y_test, predictions)
     print(f"\nAccuracy: {accuracy}\n")
 
-    #inspect some predictions 
-    label_map = {0: "HUMAN", 1: "AI"}
-
+    # ---- INSPECT PREDICTIONS ----
     print("=== TEST SET PREDICTIONS ===\n")
-
-    for i in range(len(x_test_text)):
+    for snippet, true, pred in zip(x_test_text, y_test, predictions):
         print("code snippet:")
-        print(x_test_text[i])
+        print(snippet)
         print()
-
-        print(f"True label: {label_map[y_test[i]]}")
-        print(f"Predicted label: {label_map[pred[i]]}")
+        print("True label:", "AI" if true == 1 else "HUMAN")
+        print("Predicted label:", "AI" if pred == 1 else "HUMAN")
         print("-" * 40)
-
 
 
 if __name__ == "__main__":
     evaluate()
-
-
-
-
-
-
