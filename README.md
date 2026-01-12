@@ -92,3 +92,44 @@ The backend machine learning pipeline and feature engineering are currently impl
 ## License
 
 Educational and research use only.
+
+---
+
+## How to Run Locally
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/ai-code-detector.git
+cd ai-code-detector
+```
+
+### 2. Create and Activate a Virtual Environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate  # macOS / Linux
+# .venv\\Scripts\\activate  # Windows
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run the Application
+
+To start the local Flask interface:
+
+```bash
+python src/app.py
+```
+
+Once running, open your browser and navigate to:
+
+```
+http://127.0.0.1:5000
+```
+
+You can paste Python code snippets into the interface to receive an **AI vs Human authorship prediction**.
